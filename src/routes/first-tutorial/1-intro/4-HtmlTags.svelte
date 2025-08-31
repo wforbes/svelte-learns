@@ -2,4 +2,6 @@
 	let string = `this string contains some <strong>HTML!!!</strong>`
 </script>
 
-{@html string}
+<p>
+	{@html string}
+</p>

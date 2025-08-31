@@ -7,34 +7,99 @@
 	import HtmlTags from './1-intro/4-HtmlTags.svelte';
 	import IntroState from './1-intro/5-IntroState.svelte';
 	import DeepState from './1-intro/6-DeepState.svelte';
+	import DerivedState from './1-intro/7-DerivedState.svelte'
 </script>
 
 <h1>Welcome</h1>
 
 <CardyBoxThing>
-	<YourFirstComponent />
+	<div class="ex-container">
+		<YourFirstComponent />
+	</div>
 </CardyBoxThing>
 	
 <CardyBoxThing>
-	<DynamicAttributes />
+	<div class="ex-container">
+		<DynamicAttributes />
+	</div>
 </CardyBoxThing>
 
 <CardyBoxThing>
-	<Styling />
+	<div class="ex-container">
+		<Styling />
+	</div>
 </CardyBoxThing>
 
 <CardyBoxThing>
-	<NestedComponents />
+	<div class="ex-container">
+		<NestedComponents />
+	</div>
 </CardyBoxThing>
 
 <CardyBoxThing>
-	<HtmlTags />
+	<div class="ex-container">
+		<HtmlTags />
+	</div>
 </CardyBoxThing>
 
 <CardyBoxThing>
-	<IntroState />
+	<p class="ex">
+		<span class="ex-title">State:</span> Svelte uses the <span class="term">$state</span> rune to 
+		declare reactive state variables. This is similar to the <span class="term">useState</span> 
+		hook in React, or the <span class="term">ref</span> in Vue.
+		<br />
+		<a href="https://svelte.dev/docs/svelte/$state" target="_blank">
+			svelte.dev: $state docs
+		</a>
+	</p>
+	<div class="ex-container">
+		<IntroState />
+	</div>
 </CardyBoxThing>
 
 <CardyBoxThing>
-	<DeepState />
+	<p class="ex">
+		<span class="ex-title">Deep State:</span> 
+		Svelte&apos;s state can react to mutations, this is called <span class="term">deep reactivity</span>. 
+		If used with an array or simple object, we get a <span class="term">state proxy</span>.
+		This allows us to run code when properties are read or written, like <span class="code">arr.push(...)</span>.
+		<br />
+		This allows modifying a property of an object and performing a granular update in the UI for anything using that property.
+	</p>
+	<ul class="ex-list">
+		<li>
+			<a href="https://svelte.dev/docs/svelte/$state" target="_blank">
+				svelte.dev: $state docs
+			</a>
+		</li>
+	</ul>
+	<div class="ex-container">
+		<DeepState />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Derived State:</span> 
+		The <span class="term">$derived</span> rune can be used to 
+		declare a value that is automatically re-evaluated whenever 
+		its dependencies change. Functionally similar to Vue's
+		<span class="term">computed</span> properties, or using React's 
+		<span class="term">useMemo</span> hook.
+	</p>
+	<ul class="ex-list">
+		<li>
+			<a href="https://svelte.dev/tutorial/svelte/derived-state" target="_blank">
+				svelte.dev: "Derived state" tutorial
+			</a>
+		</li>
+		<li class="list-none list-outside">
+			<a href="https://svelte.dev/docs/svelte/$derived" target="_blank">
+				svelte.dev: $derived docs
+			</a>
+		</li>
+	</ul>
+	<div class="ex-container">
+		<DerivedState />
+	</div>
 </CardyBoxThing>

@@ -104,3 +104,19 @@ button:focus:not(:focus-visible) {
 	width: 1px;
 	white-space: nowrap;
 }
+
+.cardy-box {
+	@apply rounded-md border border-gray-400 border-b-2 mx-auto w-2/3 mt-5;
+}
+.ex {
+	@apply font-sans p-2;
+}
+.ex-title {
+	@apply font-bold;
+}
+.ex-list {
+	@apply list-none p-2;
+}
+.ex-container {
+	@apply flex flex-col items-center justify-center w-full border-2 border-black p-6;
+}
