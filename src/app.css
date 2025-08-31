@@ -120,3 +120,12 @@ button:focus:not(:focus-visible) {
 .ex-container {
 	@apply flex flex-col items-center justify-center w-full border-2 border-black p-6;
 }
+.term {
+	@apply font-mono bg-gray-200;
+}
+.code {
+	@apply font-mono font-bold bg-gray-200 ;
+}
+.green-clicker {
+	@apply rounded-md px-4 py-2 transition active:scale-95 text-white bg-green-600 hover:bg-green-700 mt-5;
+}

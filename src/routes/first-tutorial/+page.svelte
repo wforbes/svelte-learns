@@ -8,6 +8,7 @@
 	import IntroState from './1-intro/5-IntroState.svelte';
 	import DeepState from './1-intro/6-DeepState.svelte';
 	import DerivedState from './1-intro/7-DerivedState.svelte'
+	import InspectingState from './1-intro/8-InspectingState.svelte'
 </script>
 
 <h1>Welcome</h1>
@@ -60,11 +61,14 @@
 <CardyBoxThing>
 	<p class="ex">
 		<span class="ex-title">Deep State:</span> 
-		Svelte&apos;s state can react to mutations, this is called <span class="term">deep reactivity</span>. 
-		If used with an array or simple object, we get a <span class="term">state proxy</span>.
-		This allows us to run code when properties are read or written, like <span class="code">arr.push(...)</span>.
+		Svelte&apos;s state can react to mutations, this is called
+		<span class="term">deep reactivity</span>. If used with an
+		array or simple object, we get a <span class="term">state proxy</span>.
+		This allows us to run code when properties are read or written,
+		like <span class="code">arr.push(...)</span>.
 		<br />
-		This allows modifying a property of an object and performing a granular update in the UI for anything using that property.
+		This allows modifying a property of an object and performing a
+		granular update in the UI for anything using that property.
 	</p>
 	<ul class="ex-list">
 		<li>
@@ -101,5 +105,47 @@
 	</ul>
 	<div class="ex-container">
 		<DerivedState />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Inspecting State:</span>
+		Svelte has a couple utility methods that can take a variable or piece of
+		state to 'inspect' it, seeing its contents or more information about it.
+		<br />
+		The <span class="code">$state.snapshot(...)</span> method can be used to 
+		get a non-reactive snapshot of the state at a certain point in execution.
+		<br />
+		The <span class="code">$inspect(...)</span> rune can be used at the root 
+		of a component&apos;s root ts script scope to automatically log a state 
+		snapshot whenever the provided piece of state changes.
+		<br />
+		Calling the inspect rune with <span class="code">.with(...)</span> allows
+		providing context to the inspected output, like here 
+		<span class="code">$inspect(numbers).with(console.trace)</span> will
+		automatically log the contents of the <span class="term">numbers</span>
+		array whenever it changes, along with the stack trace to expose where 
+		in the component that the change originated from.
+	</p>
+	<ul class="ex-list">
+		<li>
+			<a href="https://svelte.dev/tutorial/svelte/inspecting-state" target="_blank">
+				svelte.dev/tutorial/svelte/inspecting-state
+			</a>
+		</li>
+		<li>
+			<a href="https://svelte.dev/docs/svelte/$state#$state.snapshot" target="_blank">
+				svelte.dev/docs/svelte/$state#$state.snapshot
+			</a>
+		</li>
+		<li>
+			<a href="https://svelte.dev/docs/svelte/$inspect" target="_blank">
+				svelte.dev/docs/svelte/$inspect
+			</a>
+		</li>
+	</ul>
+	<div class="ex-container">
+		<InspectingState />
 	</div>
 </CardyBoxThing>
