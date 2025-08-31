@@ -4,6 +4,11 @@
 	let imgSubject = "Ross"
 	let src = "/code-meme.png"
 	let string = `this string contains some <strong>HTML!!!</strong>`
+
+	let count = $state(0);
+	function increment() {
+		count += 1;
+	}
 </script>
 
 <h1>Welcome</h1>
@@ -26,6 +31,13 @@
 
 <div class="rounded-md border border-gray-400 border-b-2 mx-auto mt-5 p-3">
 	{@html string}
+</div>
+
+<div class="flex items-center justify-center rounded-md border border-gray-400 border-b-2 mx-auto mt-5 p-3 w-50 ">
+	<button onclick={increment} class="rounded-md px-4 py-2 transition active:scale-95 text-white bg-green-600 hover:bg-green-700">
+		Clicked {count}
+		{count === 1 ? 'time': 'times'}
+	</button>
 </div>
 
 <style>
