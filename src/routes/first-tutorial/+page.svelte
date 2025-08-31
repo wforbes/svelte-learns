@@ -3,6 +3,7 @@
 	let name = "Svelte";
 	let imgSubject = "Ross"
 	let src = "/code-meme.png"
+	let string = `this string contains some <strong>HTML!!!</strong>`
 </script>
 
 <h1>Welcome</h1>
@@ -21,6 +22,10 @@
 <div class="rounded-md border border-gray-400 border-b-2 mx-auto mt-5 p-3">
 	<p>This demonstrates nested components.</p>
 	<Nested />
+</div>
+
+<div class="rounded-md border border-gray-400 border-b-2 mx-auto mt-5 p-3">
+	{@html string}
 </div>
 
 <style>
