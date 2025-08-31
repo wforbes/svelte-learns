@@ -1,6 +1,8 @@
-# sv
+# svelte-learns
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A little project to start learning Svelte! Everything is basic and ugly, sorry in advance.
+
+Default README content below, powered by [`sv`](https://github.com/sveltejs/cli).
 
 ## Creating a project
 
