@@ -4,6 +4,7 @@
 	import ElseBlocks from './14-ElseBlocks.svelte';
 	import ElseIfBlocks from './15-ElseIfBlocks.svelte';
 	import EachBlocks from './16-EachBlocks.svelte';
+	import KeyedEachBlocks from './17-KeyedEachBlocks.svelte';
 </script>
 
 <h1>Logic</h1>
@@ -44,5 +45,14 @@
 	</p>
 	<div class="ex-container">
 		<EachBlocks />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Keyed Each Blocks:</span>
+	</p>
+	<div class="ex-container">
+		<KeyedEachBlocks />
 	</div>
 </CardyBoxThing>
