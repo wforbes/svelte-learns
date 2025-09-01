@@ -1,6 +1,9 @@
 <script lang="ts">
 	import CardyBoxThing from '../components/CardyBoxThing.svelte';
 	import IfBlocks from './13-IfBlocks.svelte';
+	import ElseBlocks from './14-ElseBlocks.svelte';
+	import ElseIfBlocks from './15-ElseIfBlocks.svelte';
+	import EachBlocks from './16-EachBlocks.svelte';
 </script>
 
 <h1>Logic</h1>
@@ -14,5 +17,32 @@
 	</p>
 	<div class="ex-container">
 		<IfBlocks />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Else Blocks:</span>
+	</p>
+	<div class="ex-container">
+		<ElseBlocks />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Else If Blocks:</span>
+	</p>
+	<div class="ex-container">
+		<ElseIfBlocks />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Each Blocks:</span>
+	</p>
+	<div class="ex-container">
+		<EachBlocks />
 	</div>
 </CardyBoxThing>
