@@ -9,6 +9,7 @@
 	import DeepState from './1-intro/6-DeepState.svelte';
 	import DerivedState from './1-intro/7-DerivedState.svelte'
 	import InspectingState from './1-intro/8-InspectingState.svelte'
+	import Effects from './1-intro/9-Effects.svelte'
 </script>
 
 <h1>Welcome</h1>
@@ -147,5 +148,25 @@
 	</ul>
 	<div class="ex-container">
 		<InspectingState />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Effects:</span>
+		Svelte creates <span class="term">effects</span> for us in order to
+		enable the kinds of reactivity in previous tutorial exercises - like
+		updating the DOM in response to state changes. Using the 
+		<span class="code">$effect</span> rune, passing in a function as a param,
+		allows us to create our own.
+	</p>
+	<p class="ex font-bold! text-center">Basically, don&apos;t use this if it can be avoided.</p>
+	<p class="ex">
+		The function given to <span class="code">$effect</span> can return an
+		anonymous function that acts as a clean-up. Its called immediately before
+		the function re-runs and when the component is destroyed.
+	</p>
+	<div class="ex-container">
+		<Effects />
 	</div>
 </CardyBoxThing>
