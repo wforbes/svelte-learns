@@ -156,16 +156,22 @@
 		<span class="ex-title">Effects:</span>
 		Svelte creates <span class="term">effects</span> for us in order to
 		enable the kinds of reactivity in previous tutorial exercises - like
-		updating the DOM in response to state changes. Using the 
-		<span class="code">$effect</span> rune, passing in a function as a param,
-		allows us to create our own.
+		updating the DOM in response to state changes. The 
+		<span class="code">$effect</span> rune allows for creating our own.
+		We pass in a function param that defines what we want done as a param.
 	</p>
-	<p class="ex font-bold! text-center">Basically, don&apos;t use this if it can be avoided.</p>
+	<p class="ex text-center">
+		<span class="code">
+			$effect&lpar;&lpar;&rpar;&nbsp;=&gt;&nbsp;&lbrace;&hellip;&rbrace;&rpar;
+		</span>
+	</p>
 	<p class="ex">
 		The function given to <span class="code">$effect</span> can return an
 		anonymous function that acts as a clean-up. Its called immediately before
 		the function re-runs and when the component is destroyed.
 	</p>
+	<p class="ex font-bold! text-center">Basically, don&apos;t use this if it can be avoided.</p>
+	
 	<div class="ex-container">
 		<Effects />
 	</div>
