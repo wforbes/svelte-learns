@@ -5,6 +5,7 @@
 	import ElseIfBlocks from './15-ElseIfBlocks.svelte';
 	import EachBlocks from './16-EachBlocks.svelte';
 	import KeyedEachBlocks from './17-KeyedEachBlocks.svelte';
+	import AwaitBlocks from './18-AwaitBlocks.svelte'
 </script>
 
 <h1>Logic</h1>
@@ -54,5 +55,14 @@
 	</p>
 	<div class="ex-container">
 		<KeyedEachBlocks />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Await Blocks:</span>
+	</p>
+	<div class="ex-container">
+		<AwaitBlocks />
 	</div>
 </CardyBoxThing>
