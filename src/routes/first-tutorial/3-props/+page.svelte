@@ -2,6 +2,7 @@
 	import CardyBoxThing from '../components/CardyBoxThing.svelte';
 	import DeclaringProps from './10-DeclaringProps.svelte';
 	import DefaultValues from './11-DefaultValues.svelte';
+	import SpreadProps from './12-SpreadProps.svelte';
 </script>
 
 
@@ -28,3 +29,11 @@
 	</div>
 </CardyBoxThing>
 
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Spread Props:</span>
+	</p>
+	<div class="ex-container">
+		<SpreadProps />
+	</div>
+</CardyBoxThing>
