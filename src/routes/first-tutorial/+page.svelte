@@ -13,7 +13,9 @@
 </script>
 
 <h1>Welcome</h1>
-
+<p class="text-center">
+	Tutorials from the Svelte website. Starting <a href="https://svelte.dev/tutorial/svelte/welcome-to-svelte">here</a>.
+</p>
 
 <CardyBoxThing>
 	<a href="/first-tutorial/1-intro" class="ex-container ex-container-link">
