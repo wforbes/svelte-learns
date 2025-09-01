@@ -17,19 +17,25 @@
 
 <CardyBoxThing>
 	<a href="/first-tutorial/1-intro" class="ex-container ex-container-link">
-		<h1>Introduction</h1>
+		<h1>1 - Introduction</h1>
 	</a>
 </CardyBoxThing>
 
 
 <CardyBoxThing>
 	<a href="/first-tutorial/2-reactivity" class="ex-container ex-container-link">
-		<h1>Reactivity</h1>
+		<h1>2 - Reactivity</h1>
 	</a>
 </CardyBoxThing>
 
 <CardyBoxThing>
 	<a href="/first-tutorial/3-props" class="ex-container ex-container-link">
-		<h1>Props</h1>
+		<h1>3 - Props</h1>
+	</a>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<a href="/first-tutorial/4-logic" class="ex-container ex-container-link">
+		<h1>4 - Logic</h1>
 	</a>
 </CardyBoxThing>
