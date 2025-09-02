@@ -49,3 +49,9 @@
 		<h1>7 - Classes & Styles</h1>
 	</a>
 </CardyBoxThing>
+
+<CardyBoxThing>
+	<a href="/first-tutorial/8-actions" class="ex-container ex-container-link">
+		<h1>8 - Actions</h1>
+	</a>
+</CardyBoxThing>

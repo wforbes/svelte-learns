@@ -58,6 +58,7 @@
 		"@oslojs/encoding": "^1.1.0",
 		"drizzle-orm": "^0.40.0",
 		"marked": "^16.2.1",
-		"postgres": "^3.4.5"
+		"postgres": "^3.4.5",
+		"tippy.js": "^6.3.7"
 	}
 }
