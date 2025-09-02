@@ -43,3 +43,9 @@
 		<h1>6 - Bindings</h1>
 	</a>
 </CardyBoxThing>
+
+<CardyBoxThing>
+	<a href="/first-tutorial/7-classes-styles" class="ex-container ex-container-link">
+		<h1>7 - Classes & Styles</h1>
+	</a>
+</CardyBoxThing>
