@@ -37,3 +37,9 @@
 		<h1>5 - Events</h1>
 	</a>
 </CardyBoxThing>
+
+<CardyBoxThing>
+	<a href="/first-tutorial/6-bindings" class="ex-container ex-container-link">
+		<h1>6 - Bindings</h1>
+	</a>
+</CardyBoxThing>

@@ -5,9 +5,10 @@
 	import Capturing from './21-Capturing.svelte'
 	import ComponentEvents from './22-ComponentEvents.svelte'
 	import SpreadingEvents from './23-SpreadingEvents.svelte'
+	
 </script>
 
-<h1>Logic</h1>
+<h1>Events</h1>
 <p class="text-center">
 	Tutorials from the Svelte website. Starting <a href="https://svelte.dev/tutorial/svelte/dom-events">here</a>.
 </p>
