@@ -9,8 +9,10 @@
 	visible
 </label>
 
-{#if visible}
-	<p transition:fly={{ y: 50, duration: 2000 }}>
-		Fades in and out
-	</p>
-{/if}
+<div class="h-10">
+	{#if visible}
+		<p transition:fly={{ y: 50, duration: 2000 }}>
+			Fades in and out
+		</p>
+	{/if}
+</div>

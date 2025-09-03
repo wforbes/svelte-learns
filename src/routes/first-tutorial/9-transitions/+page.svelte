@@ -3,6 +3,12 @@
 	import TransitionDirective from './36-TransitionDirective.svelte';
 	import AddingParams from './37-AddingParams.svelte';
 	import BonusAddingParams from './37-BonusAddingParams.svelte';
+	import InAndOut from './38-InAndOut.svelte';
+	import CustomCSSTransition from './39-CustomCSSTransition.svelte';
+	import CustomJSTransition from './40-CustomJSTransition.svelte';
+	import TransitionEvents from './41-TransitionEvents.svelte';
+	import GlobalTransitions from './42-GlobalTransitions.svelte';
+	import KeyBlocks from './43-KeyBlocks/43-KeyBlocks.svelte';
 
 	let x = $state(0);
 	let y = $state(0);
@@ -50,5 +56,59 @@
 	</p>
 	<div class="ex-container">
 		<BonusAddingParams from_x={x} from_y={y} />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">In and Out:</span>
+	</p>
+	<div class="ex-container">
+		<InAndOut />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Custom Transition:</span>
+	</p>
+	<div class="ex-container">
+		<CustomCSSTransition />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Custom JS Transition:</span>
+	</p>
+	<div class="ex-container">
+		<CustomJSTransition />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Transition Events:</span>
+	</p>
+	<div class="ex-container">
+		<TransitionEvents />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Global Transitions:</span>
+	</p>
+	<div class="ex-container">
+		<GlobalTransitions />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Key Blocks:</span>
+	</p>
+	<div class="ex-container">
+		<KeyBlocks />
 	</div>
 </CardyBoxThing>

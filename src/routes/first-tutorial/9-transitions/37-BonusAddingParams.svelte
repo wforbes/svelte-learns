@@ -36,8 +36,10 @@
 	visible
 </label>
 
-{#if visible}
-	<p transition:flyFrom={{ from_x, from_y, duration: 2000 }}>
-		<strong>Bonus - Adding Params</strong>
-	</p>
-{/if}
+<div class="h-10">
+	{#if visible}
+		<p transition:flyFrom={{ from_x, from_y, duration: 2000 }}>
+			<strong>Bonus - Adding Params</strong>
+		</p>
+	{/if}
+</div>

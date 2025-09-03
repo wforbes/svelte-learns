@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
+
 	let visible = $state(true);
 </script>
 
@@ -8,10 +9,10 @@
 	visible
 </label>
 
-<div class="h-8">
+<div class="h-10">
 	{#if visible}
-		<p transition:fade>
-			Fades in and out
+		<p in:fly={{ y: 200, duration: 2000 }} out:fade>
+			Flies in, fades out
 		</p>
 	{/if}
 </div>
