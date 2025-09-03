@@ -129,6 +129,10 @@ button:focus:not(:focus-visible) {
 .green-clicker {
 	@apply rounded-md px-4 py-2 transition active:scale-95 text-white bg-green-600 hover:bg-green-700 mt-5;
 }
+.blue-clicker {
+	@apply rounded-md px-4 py-2 transition active:scale-95 text-white bg-blue-500 hover:bg-blue-600 mt-5;
+}
+
 .ex-container-link {
 	@apply block cursor-pointer no-underline! text-inherit!;
 }
