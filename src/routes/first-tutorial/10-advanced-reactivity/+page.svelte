@@ -2,6 +2,8 @@
 	import CardyBoxThing from '../components/CardyBoxThing.svelte';
 	import RawState from './44-RawState/44-RawState.svelte';
 	import ReactiveClasses from './45-ReactiveClasses.svelte';
+	import GettersAndSetters from './46-GettersAndSetters.svelte';
+	import ReactiveBuiltins from './47-ReactiveBuiltins.svelte';
 </script>
 
 <h1>Advanced Reactivity</h1>
@@ -25,5 +27,23 @@
 	</p>
 	<div class="ex-container">
 		<ReactiveClasses />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Getters and Setters:</span>
+	</p>
+	<div class="ex-container">
+		<GettersAndSetters />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Reactive Builtins:</span>
+	</p>
+	<div class="ex-container">
+		<ReactiveBuiltins />
 	</div>
 </CardyBoxThing>
