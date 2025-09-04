@@ -4,6 +4,7 @@
 	import ReactiveClasses from './45-ReactiveClasses.svelte';
 	import GettersAndSetters from './46-GettersAndSetters.svelte';
 	import ReactiveBuiltins from './47-ReactiveBuiltins.svelte';
+	import Stores from './48-Stores/48-Stores.svelte';
 </script>
 
 <h1>Advanced Reactivity</h1>
@@ -45,5 +46,14 @@
 	</p>
 	<div class="ex-container">
 		<ReactiveBuiltins />
+	</div>
+</CardyBoxThing>
+
+<CardyBoxThing>
+	<p class="ex">
+		<span class="ex-title">Stores:</span>
+	</p>
+	<div class="ex-container">
+		<Stores />
 	</div>
 </CardyBoxThing>
