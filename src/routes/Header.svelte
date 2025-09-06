@@ -28,6 +28,9 @@
 			<li aria-current={page.url.pathname === '/first-tutorial' ? 'page' : undefined}>
 				<a href="/first-tutorial">First Tutorial</a>
 			</li>
+			<li aria-current={page.url.pathname === '/tier-list' ? 'page' : undefined}>
+				<a href="/tier-list">Tier List</a>
+			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />

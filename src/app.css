@@ -139,3 +139,9 @@ button:focus:not(:focus-visible) {
 .ex-container-link:hover {
 	@apply bg-gray-200;
 }
+
+
+.drop-target {
+	box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.5), 
+	inset -5px -5px 5px rgba(0, 0, 0, 0.5);
+}

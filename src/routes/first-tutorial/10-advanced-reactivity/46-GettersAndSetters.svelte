@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	const MAX_SIZE = 200;
 
 	class Box {
@@ -6,12 +6,12 @@
 		#height = $state(0);
 		area = $derived(this.#width * this.#height);
 
-		constructor(width, height) {
+		constructor(width: number, height: number) {
 			this.#width = width;
 			this.#height = height;
 		}
 
-		embiggen(amount) {
+		embiggen(amount: number) {
 			this.width += amount;
 			this.height += amount;
 		}
