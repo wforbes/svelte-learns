@@ -5,15 +5,16 @@
 	import DragDropZone from './DragDropZone.svelte';
 	import Modal from './Modal.svelte';
 
-	type Row = { id: number; name: string; items: Item[]; };
+	type Row = { id: number; label: string; items: Item[]; };
 	type Item = { id: number; name: string; };
 
 	let rows: Row[] = $state<Row[]>([]);
 	let showModal = $state(false);
-	let newRowName = $state('');
+	let newRowLabel = $state('');
 	
-	function addRow(name: string) {
-		rows.push({ id: rows.length + 1, name, items: [] });
+	function addRow(label: string) {
+		rows.push({ id: rows.length + 1, label, items: [] });
+		newRowLabel = '';
 		showModal = false;
 	}
 
@@ -45,7 +46,7 @@
 			</div>
 		{/if}
 		{#each rows as row(row.id)}
-			<DragDropZone name={row.name} />
+			<DragDropZone label={row.label} />
 		{/each}
 	</div>
 
@@ -63,12 +64,14 @@
 
 <Modal bind:showModal>
 	{#snippet header()}
-		<h2>Add Row</h2>
+		<h2>Add Tier Row</h2>
 	{/snippet}
-	<div>
-		<input type="text" bind:value={newRowName} />
-		<button onclick={() => addRow(newRowName)}>Add</button>
+	<div class="flex flex-col gap-2 p-4">
+		<input type="text" class="border border-black rounded-md px-2 py-1" bind:value={newRowLabel} placeholder="Row Label" />
 	</div>
+	{#snippet footer()}
+		<button class="blue-clicker" onclick={() => addRow(newRowLabel)}>Add</button>
+	{/snippet}
 </Modal>
 
 

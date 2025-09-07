@@ -1,10 +1,14 @@
 <script lang="ts">
-	let { showModal = $bindable(), header, children } = $props();
+	let { showModal = $bindable(), header, footer, children } = $props();
 
 	let dialog: HTMLDialogElement | undefined = $state<HTMLDialogElement>(); // HTMLDialogElement
 
 	$effect(() => {
-		if (showModal) dialog?.showModal();
+		if (showModal) {
+			dialog?.showModal();
+		} else {
+			dialog?.close();
+		}
 	});
 </script>
 
@@ -15,18 +19,23 @@
 	onclick={(e) => { if (e.target === dialog) dialog.close(); }}
 >
 	<div>
-		{@render header?.()}
-		<hr />
-		{@render children?.()}
-		<hr />
-		<!-- svelte-ignore a11y_autofocus -->
-		<button autofocus onclick={() => dialog?.close()}>close modal</button>
+		<div class="flex flex-row justify-between items-center">
+			{@render header?.()}
+			<!-- svelte-ignore a11y_autofocus -->
+			<button autofocus onclick={() => dialog?.close()}>X</button>
+		</div>
+		<div class="flex flex-col gap-2 p-4">
+			{@render children?.()}
+		</div>
+		<div class="flex flex-row gap-2 p-4 justify-end">
+			{@render footer?.()}
+		</div>
 	</div>
 </dialog>
 
 <style>
 	dialog {
-		max-width: 32em;
+		width: 32em;
 		max-height: 32em;
 		border-radius: 0.2em;
 		border: none;
@@ -35,7 +44,8 @@
 		position: fixed;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		margin-left: -16em;
+		margin-top: -24em;
 	}
 	dialog::backdrop {
 		background: rgba(0, 0, 0, 0.3);
