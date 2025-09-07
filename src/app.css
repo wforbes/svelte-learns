@@ -145,3 +145,31 @@ button:focus:not(:focus-visible) {
 	box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.5), 
 	inset -5px -5px 5px rgba(0, 0, 0, 0.5);
 }
+
+.bg-s-tier {
+	background-color: rgb(255, 127, 127);
+}
+
+.bg-a-tier {
+	background-color: rgb(255, 191, 127);
+}
+
+.bg-b-tier {
+	background-color: rgb(255, 223, 127);
+}
+
+.bg-c-tier {
+	background-color: rgb(255, 255, 127);
+}
+
+.bg-d-tier {
+	background-color: rgb(191, 255, 127);
+}
+
+.bg-f-tier {
+	background-color: rgb(127, 255, 191);
+}
+
+.tier-color-box {
+	@apply w-[50px] text-center py-3
+}

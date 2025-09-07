@@ -3,19 +3,27 @@
 	import { dndzone } from 'svelte-dnd-action';
 	import type { DndEvent } from 'svelte-dnd-action';
 	import DragDropZone from './DragDropZone.svelte';
-	import Modal from './Modal.svelte';
+	import NewRowModal from './NewRowModal.svelte';
 
-	type Row = { id: number; label: string; items: Item[]; };
+	type Row = { id: number; label: string; items: Item[]; color: string };
 	type Item = { id: number; name: string; };
 
 	let rows: Row[] = $state<Row[]>([]);
 	let showModal = $state(false);
-	let newRowLabel = $state('');
+	let defaultRowsAdded = $state(false);
 	
-	function addRow(label: string) {
-		rows.push({ id: rows.length + 1, label, items: [] });
-		newRowLabel = '';
-		showModal = false;
+	function handleAddRow(label: string, color: string) {
+		rows.push({ id: rows.length + 1, label, items: [], color });
+	}
+
+	function addDefaultRows() {
+		rows.push({ id: rows.length + 1, label: 'S', items: [], color: 's' });
+		rows.push({ id: rows.length + 1, label: 'A', items: [], color: 'a' });
+		rows.push({ id: rows.length + 1, label: 'B', items: [], color: 'b' });
+		rows.push({ id: rows.length + 1, label: 'C', items: [], color: 'c' });
+		rows.push({ id: rows.length + 1, label: 'D', items: [], color: 'd' });
+		rows.push({ id: rows.length + 1, label: 'F', items: [], color: 'f' });
+		defaultRowsAdded = true;
 	}
 
 	let startItems = $state<Item[]>([
@@ -35,7 +43,8 @@
 
 <h1>Tier List</h1>
 <div class="flex flex-row gap-2 pb-4">
-	<button class="blue-clicker" onclick={() => showModal = true}>Add Row</button>
+	<button class="blue-clicker" onclick={() => addDefaultRows()}>Add Default Rows</button>
+	<button class="blue-clicker" onclick={() => showModal = true}>Add Custom Tier Row</button>
 </div>
 
 <div class="flex flex-col w-full gap-2">
@@ -46,10 +55,9 @@
 			</div>
 		{/if}
 		{#each rows as row(row.id)}
-			<DragDropZone label={row.label} />
+			<DragDropZone label={row.label} color={row.color} />
 		{/each}
 	</div>
-
 
 	<div
 		class="dndzone w-full flex flex-row gap-2 p-2"
@@ -62,18 +70,7 @@
 	</div>
 </div>
 
-<Modal bind:showModal>
-	{#snippet header()}
-		<h2>Add Tier Row</h2>
-	{/snippet}
-	<div class="flex flex-col gap-2 p-4">
-		<input type="text" class="border border-black rounded-md px-2 py-1" bind:value={newRowLabel} placeholder="Row Label" />
-	</div>
-	{#snippet footer()}
-		<button class="blue-clicker" onclick={() => addRow(newRowLabel)}>Add</button>
-	{/snippet}
-</Modal>
-
+<NewRowModal bind:showModal addRow={handleAddRow} />
 
 <style>
     .dndzone {
