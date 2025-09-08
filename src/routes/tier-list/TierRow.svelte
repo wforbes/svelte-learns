@@ -3,16 +3,27 @@
 	import type { DndEvent } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
 	import type { Item } from './types';
+	import { rows, flipMs } from './store';
 
-	let { label, color, items = $bindable(), flipMs = 300 } = $props<{ label: string, color: string, items: Item[], flipMs?: number }>();
+	let { id, label, color } = $props<{ id: string, label: string, color: string, flipMs?: number }>();
 
-	let _items = $state<Item[]>(items);
+	const row = $derived($rows.find(row => row.id === id));
+
+	let items = $state(row?.items || []);
+	$effect(() => {
+		if (row) {
+			items = row.items;
+		}
+	});
+	
 	
 	function handleDndConsider(e: CustomEvent<DndEvent<Item>>) {
-		_items = e.detail.items;
+		items = e.detail.items;
 	}
 	function handleDndFinalize(e: CustomEvent<DndEvent<Item>>) {
-		_items = e.detail.items;
+		items = e.detail.items;
+
+		rows.update(rows => rows.map(row => row.id === id ? { ...row, items } : row));
 	}
 
 </script>
@@ -22,15 +33,15 @@
 	<div
 		class="dndzone w-full flex flex-row gap-2 p-2 h-[100px] border border-black bg-gray-200"
 		use:dndzone="{{
-			items: _items,
-			flipDurationMs: flipMs,
+			items,
+			flipDurationMs: $flipMs,
 			dropTargetStyle: {outline:'0px solid black'} 
 		}}" 
 		onconsider="{handleDndConsider}"
 		onfinalize="{handleDndFinalize}"
 	>
-		{#each _items as item(item.id)}
-			<div class="dnd-item flex justify-center items-center w-[100px] border border-blue-500 bg-white" animate:flip="{{duration: flipMs}}">{item.name}</div>
+		{#each items as item(item.id)}
+			<div class="dnd-item flex justify-center items-center w-[100px] border border-blue-500 bg-white" animate:flip="{{duration: $flipMs}}">{item.name}</div>
 		{/each}
 	</div>
 </div>

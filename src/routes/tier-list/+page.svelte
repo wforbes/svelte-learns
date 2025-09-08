@@ -4,40 +4,45 @@
 	import NewRowModal from './NewRowModal.svelte';
 	import StartingRow from './StartingRow.svelte';
 	import { v4 as uuidv4 } from 'uuid';
+	import { rows, startItems, flipMs, defaultRowsAdded } from './store';
 
-	let rows: Row[] = $state<Row[]>([]);
+	//let rows: Row[] = $state<Row[]>([]);
 	let showModal = $state(false);
-	let defaultRowsAdded = $state(false);
-	let startItems: Item[] = $state<Item[]>([
+	//let defaultRowsAdded = $state(false);
+	/*let startItems: Item[] = $state<Item[]>([
+		{ id: uuidv4(), name: 'Item 1' },
+		{ id: uuidv4(), name: 'Item 2' },
+		{ id: uuidv4(), name: 'Item 3' }
+	]);*/
+	startItems.set([
 		{ id: uuidv4(), name: 'Item 1' },
 		{ id: uuidv4(), name: 'Item 2' },
 		{ id: uuidv4(), name: 'Item 3' }
 	]);
-	const flipMs = 100;
+	//const flipMs = 100;
 
 	function handleAddRow(label: string, color: string) {
-		rows.push({ id: rows.length + 1, label, items: [], color });
+		const newRow = { id: uuidv4(), label, items: [], color };
+		rows.update(rows => [...rows, newRow]);
 	}
 
 	function addDefaultRows() {
-		rows.push({ id: rows.length + 1, label: 'S', items: [], color: 's' });
-		rows.push({ id: rows.length + 1, label: 'A', items: [], color: 'a' });
-		rows.push({ id: rows.length + 1, label: 'B', items: [], color: 'b' });
-		rows.push({ id: rows.length + 1, label: 'C', items: [], color: 'c' });
-		rows.push({ id: rows.length + 1, label: 'D', items: [], color: 'd' });
-		rows.push({ id: rows.length + 1, label: 'F', items: [], color: 'f' });
-		defaultRowsAdded = true;
+		const defaultRows = [
+			{ id: uuidv4(), label: 'S', items: [], color: 's' },
+			{ id: uuidv4(), label: 'A', items: [], color: 'a' },
+			{ id: uuidv4(), label: 'B', items: [], color: 'b' },
+			{ id: uuidv4(), label: 'C', items: [], color: 'c' },
+			{ id: uuidv4(), label: 'D', items: [], color: 'd' },
+			{ id: uuidv4(), label: 'F', items: [], color: 'f' }
+		];
+		rows.update(rows => [...rows, ...defaultRows]);
+		defaultRowsAdded.set(true);
 	}
 
 	function resetItems() {
-		console.log('resetItems');
-		console.log('rows', rows); // I think I need a store for this!
-		//const items = rows.flatMap(row => row.items);
-		//console.log('items', items);
-		//startItems = [...startItems, ...items];
-		//rows.forEach(row => {
-		//	row.items = [];
-		//});
+		const rowItems = $rows.flatMap(row => row.items);
+		startItems.update(items => [...items, ...rowItems]);
+		rows.update(rows => rows.map(row => ({ ...row, items: [] })));
 	}
 
 	function clearItems() {
@@ -48,24 +53,24 @@
 
 <h1>Tier List</h1>
 <div class="flex flex-row gap-2 pb-4 justify-center">
-	<button class="blue-clicker" onclick={() => addDefaultRows()} disabled={defaultRowsAdded}>Add Default Rows</button>
+	<button class="blue-clicker" onclick={() => addDefaultRows()} disabled={$defaultRowsAdded}>Add Default Rows</button>
 	<button class="blue-clicker" onclick={() => showModal = true}>Add Custom Tier Row</button>
 	<button class="red-clicker" onclick={resetItems}>Reset Items</button>
 </div>
 
 <div class="flex flex-col w-full gap-2">
 	<div class="flex flex-col gap-2 min-h-[100px]">
-		{#if rows.length === 0}
+		{#if $rows.length === 0}
 			<div class="flex flex-col justify-center items-center w-full h-[100px] border border-black">
 				<p>No rows</p>
 				<p>(Add some to get started)</p>
 			</div>
 		{/if}
-		{#each rows as row(row.id)}
-			<TierRow label={row.label} color={row.color} bind:items={row.items} {flipMs} />
+		{#each $rows as row(row.id)}
+			<TierRow id={row.id} label={row.label} color={row.color} />
 		{/each}
 	</div>
-	<StartingRow bind:startItems={startItems} {flipMs} />
+	<StartingRow />
 </div>
 
 <NewRowModal bind:showModal addRow={handleAddRow} />
