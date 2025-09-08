@@ -1,17 +1,20 @@
 <script lang="ts">
-	import { flip } from 'svelte/animate';
-	import { dndzone } from 'svelte-dnd-action';
-	import type { DndEvent } from 'svelte-dnd-action';
-	import DragDropZone from './DragDropZone.svelte';
+	import type { Row, Item } from './types';
+	import TierRow from './TierRow.svelte';
 	import NewRowModal from './NewRowModal.svelte';
-
-	type Row = { id: number; label: string; items: Item[]; color: string };
-	type Item = { id: number; name: string; };
+	import StartingRow from './StartingRow.svelte';
+	import { v4 as uuidv4 } from 'uuid';
 
 	let rows: Row[] = $state<Row[]>([]);
 	let showModal = $state(false);
 	let defaultRowsAdded = $state(false);
-	
+	let startItems: Item[] = $state<Item[]>([
+		{ id: uuidv4(), name: 'Item 1' },
+		{ id: uuidv4(), name: 'Item 2' },
+		{ id: uuidv4(), name: 'Item 3' }
+	]);
+	const flipMs = 100;
+
 	function handleAddRow(label: string, color: string) {
 		rows.push({ id: rows.length + 1, label, items: [], color });
 	}
@@ -26,48 +29,43 @@
 		defaultRowsAdded = true;
 	}
 
-	let startItems = $state<Item[]>([
-		{ id: 1, name: 'Item 1' },
-		{ id: 2, name: 'Item 2' },
-		{ id: 3, name: 'Item 3' }
-	]);
+	function resetItems() {
+		console.log('resetItems');
+		console.log('rows', rows); // I think I need a store for this!
+		//const items = rows.flatMap(row => row.items);
+		//console.log('items', items);
+		//startItems = [...startItems, ...items];
+		//rows.forEach(row => {
+		//	row.items = [];
+		//});
+	}
 
-	const flipDurationMs = 300;
-	function handleDndConsider(e: CustomEvent<DndEvent<Item>>) {
-		startItems = e.detail.items;
+	function clearItems() {
+		
 	}
-	function handleDndFinalize(e: CustomEvent<DndEvent<Item>>) {
-		startItems = e.detail.items;
-	}
+
 </script>
 
 <h1>Tier List</h1>
-<div class="flex flex-row gap-2 pb-4">
-	<button class="blue-clicker" onclick={() => addDefaultRows()}>Add Default Rows</button>
+<div class="flex flex-row gap-2 pb-4 justify-center">
+	<button class="blue-clicker" onclick={() => addDefaultRows()} disabled={defaultRowsAdded}>Add Default Rows</button>
 	<button class="blue-clicker" onclick={() => showModal = true}>Add Custom Tier Row</button>
+	<button class="red-clicker" onclick={resetItems}>Reset Items</button>
 </div>
 
 <div class="flex flex-col w-full gap-2">
-	<div class="flex flex-col gap-2 min-h-[150px]">
+	<div class="flex flex-col gap-2 min-h-[100px]">
 		{#if rows.length === 0}
-			<div class="flex justify-center items-center w-full h-[150px] border border-black">
+			<div class="flex flex-col justify-center items-center w-full h-[100px] border border-black">
 				<p>No rows</p>
+				<p>(Add some to get started)</p>
 			</div>
 		{/if}
 		{#each rows as row(row.id)}
-			<DragDropZone label={row.label} color={row.color} />
+			<TierRow label={row.label} color={row.color} bind:items={row.items} {flipMs} />
 		{/each}
 	</div>
-
-	<div
-		class="dndzone w-full flex flex-row gap-2 p-2"
-		use:dndzone="{{items: startItems, flipDurationMs, dropTargetStyle: {outline:'0px solid black'} }}"
-		onconsider="{handleDndConsider}" onfinalize="{handleDndFinalize}"
-	>
-		{#each startItems as item(item.id)}
-			<div class="dnd-item flex justify-center items-center w-[120px]" animate:flip="{{duration: flipDurationMs}}">{item.name}</div>
-		{/each}
-	</div>
+	<StartingRow bind:startItems={startItems} {flipMs} />
 </div>
 
 <NewRowModal bind:showModal addRow={handleAddRow} />

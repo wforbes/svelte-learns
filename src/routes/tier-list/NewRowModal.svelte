@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
 
-	let { addRow = $bindable(), showModal = $bindable() } = $props();
+	let { addRow, showModal = $bindable() } = $props();
 
 	let newRowLabel = $state('');
 	let newRowColor = $state('');
@@ -13,6 +13,11 @@
 	}
 
 	function createRowAndClose(newRowLabel: string, newRowColor: string) {
+		if (newRowLabel.trim() === ''){
+			alert('Row label cannot be empty');
+			return;
+		}
+
 		addRow(newRowLabel, newRowColor);
 		newRowLabel = '';
 		newRowColor = '';

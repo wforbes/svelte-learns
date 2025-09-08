@@ -133,6 +133,14 @@ button:focus:not(:focus-visible) {
 	@apply rounded-md px-4 py-2 transition active:scale-95 text-white bg-blue-500 hover:bg-blue-600 mt-5;
 }
 
+.blue-clicker:disabled {
+	@apply bg-gray-400 hover:bg-gray-400 cursor-not-allowed;
+}
+
+.red-clicker {
+	@apply rounded-md px-4 py-2 transition active:scale-95 text-white bg-red-500 hover:bg-red-600 mt-5;
+}
+
 .ex-container-link {
 	@apply block cursor-pointer no-underline! text-inherit!;
 }
