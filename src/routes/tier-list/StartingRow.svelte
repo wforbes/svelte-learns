@@ -5,6 +5,7 @@
 	import NewItemModal from './NewItemModal.svelte';
 	import type { Item } from './types';
 	import { startItems, flipMs } from './store';
+	import TierItem from './TierItem.svelte';
 	//let { startItems = $bindable(), flipMs = 300 } = $props<{ startItems: Item[], flipMs?: number }>();
 
 	let showModal = $state(false);
@@ -33,7 +34,9 @@
 		onconsider="{handleDndConsider}" onfinalize="{handleDndFinalize}"
 	>
 		{#each $startItems as item(item.id)}
-			<div class="dnd-item flex justify-center items-center w-[100px] border border-blue-500 bg-white" animate:flip="{{duration: $flipMs}}">{item.name}</div>
+			<div class="flex justify-center items-center h-full" animate:flip="{{duration: $flipMs}}">
+				<TierItem item={item} />
+			</div>
 		{/each}
 	</div>
 	<div class="flex flex-row justify-center p-2">

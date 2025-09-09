@@ -1,25 +1,17 @@
 <script lang="ts">
-	import type { Row, Item } from './types';
 	import TierRow from './TierRow.svelte';
 	import NewRowModal from './NewRowModal.svelte';
 	import StartingRow from './StartingRow.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	import { rows, startItems, flipMs, defaultRowsAdded } from './store';
 
-	//let rows: Row[] = $state<Row[]>([]);
 	let showModal = $state(false);
-	//let defaultRowsAdded = $state(false);
-	/*let startItems: Item[] = $state<Item[]>([
-		{ id: uuidv4(), name: 'Item 1' },
-		{ id: uuidv4(), name: 'Item 2' },
-		{ id: uuidv4(), name: 'Item 3' }
-	]);*/
+
 	startItems.set([
-		{ id: uuidv4(), name: 'Item 1' },
-		{ id: uuidv4(), name: 'Item 2' },
-		{ id: uuidv4(), name: 'Item 3' }
+		{ id: uuidv4(), name: 'Item 1', imgUrl: null },
+		{ id: uuidv4(), name: 'Item 2', imgUrl: null },
+		{ id: uuidv4(), name: 'Item 3', imgUrl: null }
 	]);
-	//const flipMs = 100;
 
 	function handleAddRow(label: string, color: string) {
 		const newRow = { id: uuidv4(), label, items: [], color };
@@ -43,10 +35,6 @@
 		const rowItems = $rows.flatMap(row => row.items);
 		startItems.update(items => [...items, ...rowItems]);
 		rows.update(rows => rows.map(row => ({ ...row, items: [] })));
-	}
-
-	function clearItems() {
-		
 	}
 
 </script>

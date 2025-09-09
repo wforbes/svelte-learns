@@ -4,6 +4,7 @@
 	import { flip } from 'svelte/animate';
 	import type { Item } from './types';
 	import { rows, flipMs } from './store';
+	import TierItem from './TierItem.svelte';
 
 	let { id, label, color } = $props<{ id: string, label: string, color: string, flipMs?: number }>();
 
@@ -41,7 +42,9 @@
 		onfinalize="{handleDndFinalize}"
 	>
 		{#each items as item(item.id)}
-			<div class="dnd-item flex justify-center items-center w-[100px] border border-blue-500 bg-white" animate:flip="{{duration: $flipMs}}">{item.name}</div>
+			<div animate:flip="{{duration: $flipMs}}">
+				<TierItem item={item} />
+			</div>
 		{/each}
 	</div>
 </div>
